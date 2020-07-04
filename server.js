@@ -1,8 +1,7 @@
 // Initialize express
 const express = require('express');
 const app = express();
-// get data back from db 
-const handlebars = require('handlebars');
+const handlebars = require('handlebars')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({
@@ -14,7 +13,6 @@ const hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 // Use handlebars to render
 app.set('view engine', 'handlebars');
-
 
 
 const bodyParser = require('body-parser');

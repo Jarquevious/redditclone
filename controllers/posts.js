@@ -13,12 +13,17 @@ module.exports = (app) => {
   });
 
   app.get('/', (req, res) => {
-    res.render('home', {msg:'R'});
+    Post.find({}).lean()
+    .then(posts => {
+      res.render("posts-index", { posts });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
   })
   
   app.get('/posts/new', (req,res) =>{
     res.render('posts-new.handlebars');
   })
 };
-
 
