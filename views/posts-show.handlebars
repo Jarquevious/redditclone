@@ -1,6 +1,31 @@
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <a href="{{post.url}}" class="lead">{{post.title}}</a>
-    <p>{{post.summary}}</p>
+
+<div class="row w-50 m-auto">
+  <div class="card mt-5 w-100">
+      <div class="card-body">
+        <p class="text-right">Rating: {{post.voteScore}}</p>
+          <a href="{{post.url}}" class="lead">{{post.title}}</a>
+          <p>{{post.summary}}</p>
+          <p>{{post.author.username}}</p>
+      </div>
   </div>
+</div>
+
+
+<div class="row w-50 m-auto">
+  <div class="card mt-5 w-100">
+      <div class="card-body">
+      <form action="/posts/{{post._id}}/comments" method="post" class="">
+        <textarea class='form-control' name="content" placeholder="Comment"></textarea>
+        <div class="text-right mt-3">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row w-50 m-auto">
+  {{#each post.comments}}
+    {{> comment comment=this postId=../post._id}}
+  {{/each}}
 </div>
